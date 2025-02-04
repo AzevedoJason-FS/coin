@@ -1,0 +1,22 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('./fonts/Inter.ttf') format('truetype');
+  font-weight: 100 900; /* Supports all weights */
+  font-style: normal;
+  font-display: swap;
+}
+
+
+
+body {
+  margin: 0px;
+  font-family: 'Inter', sans-serif;
+  /* background: radial-gradient(circle, #025e9f 0%, #0a315a 100%); */
+  background-color: rgb(13, 20, 33);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+code {
+  font-family: 'Inter', sans-serif;
+}

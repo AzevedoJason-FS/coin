@@ -1,0 +1,345 @@
+button,
+input[type="submit"],
+input[type="reset"] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.crypto-prices {
+  display: flex;
+  flex-direction: row;
+  padding: 0px 20px;
+  border-bottom: 1px solid rgba(186, 215, 247, 0.1);
+  background-color: rgb(13, 20, 33);
+  z-index: 10;
+  gap: 20px;
+  position: relative;
+  overflow: hidden; /* Ensures content outside the container is hidden */
+}
+
+.crypto-prices ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 20px; /* Add space between items */
+  white-space: nowrap;
+  animation: scroll 30s linear infinite;
+}
+
+.crypto-prices:hover ul {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.crypto-prices li {
+  margin: 5px 0;
+}
+
+.prices-box {
+  display: flex;
+  margin: 0;
+}
+
+.coin-price {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-direction: row;
+}
+
+.components {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  float: right;
+}
+
+.component {
+  width: 200px;
+  border-radius: 8px;
+  display: flex;
+  column-gap: 10px;
+  row-gap: 12px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.comp {
+  transition: transform 0.2s ease-in-out; /* Smooth transition on hover */
+}
+
+.comp:hover {
+  transform: translateY(-10px); /* Moves up when hovered */
+}
+
+.comp-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.comp-main p {
+  margin: 2px 0;
+}
+
+.crypto-balances {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 80px;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0); /* Start at the coin's top position */
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(150vh); /* Fall well beyond the screen's height */
+    opacity: 0; /* Fade out as it falls */
+  }
+}
+
+.news-event {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  /* padding: 0 20px; */
+  justify-content: flex-start;
+  border-bottom: 1px solid #ea3943;
+  background: #070d15;
+}
+
+.news-event h3 {
+  margin: 0;
+  color: white;
+  font-style: italic;
+  font-size: 20px;
+}
+
+.balances {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 20px;
+  margin-right: 40px;
+}
+
+.coin-balance {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: white;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(186, 215, 247, 0.1);
+}
+
+.coin-balance:nth-child(1) {
+  margin-bottom: 6px;
+  justify-content: flex-end;
+  background-color: #222531;
+  padding: 4px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: none;
+}
+
+.coin-balance:nth-child(1) p {
+  font-size: 16px;
+}
+
+.coin-balance:nth-child(n + 2) {
+  margin-bottom: 10px;
+}
+
+.coin-balance:nth-child(n + 3) {
+  margin-bottom: 10px;
+}
+
+.coin-balance:nth-child(n + 4) {
+  margin-bottom: 10px;
+}
+
+.coin-balance:nth-child(n + 10) {
+    margin-bottom: 0px;
+    padding: 0;
+  }
+
+.arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent; /* Left triangle edge */
+  border-right: 5px solid transparent; /* Right triangle edge */
+  border-bottom: 5px solid #16c784; /* Bottom triangle edge to form the caret */
+  margin: 10px auto; /* Optional: center alignment */
+}
+
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent; /* Left triangle edge */
+  border-right: 5px solid transparent; /* Right triangle edge */
+  border-top: 5px solid #ea3943; /* Top triangle edge to form the caret */
+  margin: 10px auto; /* Optional: center alignment */
+}
+
+.coin-balance span {
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+.coin-balance span.positive {
+  color: #16c784; /* Green for gains */
+}
+
+.coin-balance span.negative {
+  color: #ea3943; /* Red for losses */
+}
+
+.news-event-container {
+  width: 100%;
+  position: fixed;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: top 0.5s ease-in-out;
+  z-index: 9;
+  background-color: #f8f9fa;
+  /* padding: 1rem 2rem; */
+  /* border: 1px solid #ddd; */
+  border-radius: 8px;
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.news-event-container.show {
+  top: 56px; /* Slides down into the viewport */
+}
+
+.news-event-container.hide {
+  top: -100px; /* Slides back up */
+}
+
+.invest-btn {
+  border: 2px solid #16c784;
+  padding: 4px 20px;
+  border-radius: 6px;
+  color: #16c784;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: rgba(22, 199, 131, 0.201);
+}
+
+.sell-btn {
+  border: 2px solid #ea3943;
+  padding: 4px 20px;
+  border-radius: 6px;
+  color: #ea3943;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: hsla(357, 81%, 57%, 0.201);
+}
+
+.social-media {
+  width: 420px;
+  border-right: 1px solid rgba(186, 215, 247, 0.1);
+  overflow: scroll;
+  height: 94vh;
+  /* background-color: #171923; */
+}
+
+button:disabled {
+  color: #858ca2;
+  background-color: rgba(255, 255, 255, 0.24);
+  border: 2px solid #858ca2;
+  cursor: not-allowed;
+}
+
+.social-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 20px;
+  border-radius: 10px;
+  overflow-y: auto;
+}
+
+.post {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid rgba(186, 215, 247, 0.1);
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.post-pic{
+    width: 250px;
+    height: 150px;
+    border-radius: 10px;
+    border: 1px solid rgba(186, 215, 247, 0.1);
+}
+
+.post-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-content p,
+h4 {
+  color: white;
+  font-size: 14px;
+}
+
+.likes {
+  color: #858ca2;
+  font-size: 14px;
+  border: 1px solid #858ca2;
+  padding: 4px 10px;
+  border-radius: 60px;
+}
+
+.coin-effect {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.person-chart{
+    width: 100%;
+    height: 100px;
+    margin: 0 0 60px 0;
+    padding: 5px;
+    position: relative;
+}
+
+.person-chart h2{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin: 0;
+    position: absolute;
+    color: white;
+    font-size: 42px;
+}
