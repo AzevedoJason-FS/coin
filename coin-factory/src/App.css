@@ -164,21 +164,8 @@ input[type="reset"] {
 }
 
 .coin-balance:nth-child(n + 2) {
-  margin-bottom: 10px;
+  margin-bottom: 4px;
 }
-
-.coin-balance:nth-child(n + 3) {
-  margin-bottom: 10px;
-}
-
-.coin-balance:nth-child(n + 4) {
-  margin-bottom: 10px;
-}
-
-.coin-balance:nth-child(n + 10) {
-    margin-bottom: 0px;
-    padding: 0;
-  }
 
 .arrow-up {
   width: 0;
@@ -239,7 +226,7 @@ input[type="reset"] {
 .invest-btn {
   border: 2px solid #16c784;
   padding: 4px 20px;
-  border-radius: 6px;
+  border-radius: 60px;
   color: #16c784;
   font-size: 14px;
   font-weight: 500;
@@ -294,12 +281,12 @@ button:disabled {
   margin-right: 10px;
 }
 
-.post-pic{
+/* .post-pic{
     width: 250px;
     height: 150px;
     border-radius: 10px;
     border: 1px solid rgba(186, 215, 247, 0.1);
-}
+} */
 
 .post-content {
   display: flex;
@@ -337,7 +324,6 @@ h4 {
 .person-chart h2{
     display: flex;
     gap: 10px;
-    align-items: center;
     margin: 0;
     position: absolute;
     color: white;
