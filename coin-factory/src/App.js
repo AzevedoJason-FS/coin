@@ -63,7 +63,7 @@ function App() {
 
   const [pendingPosts, setPendingPosts] = useState([]);
 
-  const [releasedCoins, setReleasedCoins] = useState([{ name: "Galaxy Token", logo: "https://via.placeholder.com/40", supply: 1000000 }]);
+  const [releasedCoins, setReleasedCoins] = useState([]);
 
   const [coinMarketData, setCoinMarketData] = useState({});
 
