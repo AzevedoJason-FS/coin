@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./App.css";
-import CryptoLineChart from "./CryptoLineChart";
+// import CryptoLineChart from "./CryptoLineChart";
 import USDLineChart from "./USDLineChart";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -67,7 +67,6 @@ function App() {
 
   const [coinMarketData, setCoinMarketData] = useState({});
 
-  const [usdHistory, setUsdHistory] = useState([]);
   const [investedHistory, setInvestedHistory] = useState([]); // ✅ Track investment history
 
   // State for news events
@@ -75,65 +74,65 @@ function App() {
   const [visible, setVisible] = useState(false);
   const [posts, setPosts] = useState([]);
 
-  const [newCoin, setNewCoin] = useState({
-    name: "",
-    logo: "",
-    supply: "",
-  });
+  // const [newCoin, setNewCoin] = useState({
+  //   name: "",
+  //   logo: "",
+  //   supply: "",
+  // });
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setNewCoin((prev) => ({ ...prev, [name]: value }));
-  };
+  // const handleInputChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setNewCoin((prev) => ({ ...prev, [name]: value }));
+  // };
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setNewCoin((prev) => ({ ...prev, logo: reader.result }));
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  // const handleFileChange = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onloadend = () => {
+  //       setNewCoin((prev) => ({ ...prev, logo: reader.result }));
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
 
-  const releaseCoin = () => {
-    if (!newCoin.name || !newCoin.logo || !newCoin.supply) {
-      alert("Please fill in all fields.");
-      return;
-    }
+  // const releaseCoin = () => {
+  //   if (!newCoin.name || !newCoin.logo || !newCoin.supply) {
+  //     alert("Please fill in all fields.");
+  //     return;
+  //   }
 
-    const coinName = newCoin.name.trim();
-    if (releasedCoins.some((coin) => coin.name === coinName)) {
-      alert("This coin already exists!");
-      return;
-    }
+  //   const coinName = newCoin.name.trim();
+  //   if (releasedCoins.some((coin) => coin.name === coinName)) {
+  //     alert("This coin already exists!");
+  //     return;
+  //   }
 
-    // Set initial price & market data
-    const initialPrice = Math.random() * 0.05 + 0.01;
-    setReleasedCoins((prev) => [...prev, newCoin]);
-    setCoinMarketData((prev) => ({
-      ...prev,
-      [coinName]: { price: initialPrice, supply: Number(newCoin.supply), marketCap: initialPrice * Number(newCoin.supply) },
-    }));
+  //   // Set initial price & market data
+  //   const initialPrice = Math.random() * 0.05 + 0.01;
+  //   setReleasedCoins((prev) => [...prev, newCoin]);
+  //   setCoinMarketData((prev) => ({
+  //     ...prev,
+  //     [coinName]: { price: initialPrice, supply: Number(newCoin.supply), marketCap: initialPrice * Number(newCoin.supply) },
+  //   }));
 
-    // ✅ Add the new coin post to pendingPosts
-    setPendingPosts((prev) => [
-      ...prev,
-      {
-        id: Date.now(),
-        name: "CryptoNews",
-        profilePic: "/images/news-avatar.png",
-        message: `🚀 "${coinName}" has just launched! Will it take over the crypto market?`,
-        likes: Math.floor(Math.random() * 500 + 100),
-        coinEffect: coinName,
-        priceImpact: [0.1, 0.3], // Boost price for hype
-      },
-    ]);
+  //   // ✅ Add the new coin post to pendingPosts
+  //   setPendingPosts((prev) => [
+  //     ...prev,
+  //     {
+  //       id: Date.now(),
+  //       name: "CryptoNews",
+  //       profilePic: "/images/news-avatar.png",
+  //       message: `🚀 "${coinName}" has just launched! Will it take over the crypto market?`,
+  //       likes: Math.floor(Math.random() * 500 + 100),
+  //       coinEffect: coinName,
+  //       priceImpact: [0.1, 0.3], // Boost price for hype
+  //     },
+  //   ]);
 
-    // Reset form
-    setNewCoin({ name: "", logo: "", supply: "" });
-  };
+  //   // Reset form
+  //   setNewCoin({ name: "", logo: "", supply: "" });
+  // };
 
   // Ref to store previous prices
   const prevPricesRef = useRef(cryptoPrices);
@@ -349,10 +348,10 @@ function App() {
       .filter(([key]) => key !== coin) // Exclude the sold coin
       .reduce((sum, [key, balance]) => sum + balance * cryptoPrices[key], 0);
 
-    setUsdHistory((prevHistory = []) => [
-      ...prevHistory.slice(-30),
-      { time: Date.now(), usd: totalUSD + newTotalInvested }, // ✅ Ensure total includes cash + investments
-    ]);
+    // setUsdHistory((prevHistory = []) => [
+    //   ...prevHistory.slice(-30),
+    //   { time: Date.now(), usd: totalUSD + newTotalInvested }, // ✅ Ensure total includes cash + investments
+    // ]);
 
     setInvestedHistory((prevHistory = []) => [
       ...prevHistory.slice(-30),
@@ -411,12 +410,12 @@ function App() {
       return sum + balance * cryptoPrices[coin]; // ✅ Convert all balances to USD
     }, 0);
 
-    const totalNetWorth = totalUSD + totalCryptoValue; // ✅ Always track total USD + investments
+    // const totalNetWorth = totalUSD + totalCryptoValue; // ✅ Always track total USD + investments
 
-    setUsdHistory((prevHistory = []) => [
-      ...prevHistory.slice(-30),
-      { time: Date.now(), usd: totalNetWorth }, // ✅ Use total wealth instead of just USD
-    ]);
+    // setUsdHistory((prevHistory = []) => [
+    //   ...prevHistory.slice(-30),
+    //   { time: Date.now(), usd: totalNetWorth }, // ✅ Use total wealth instead of just USD
+    // ]);
 
     setInvestedHistory((prevHistory = []) => [
       ...prevHistory.slice(-30),
